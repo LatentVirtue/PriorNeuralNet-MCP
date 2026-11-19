@@ -1,0 +1,419 @@
+{
+ "schema_version": 1,
+ "run_id": "20261119-015518-177c",
+ "created_at": "2026-11-19T00:55:32+00:00",
+ "dataset": {
+  "n_samples": 240,
+  "n_features": 300,
+  "n_classes": 2,
+  "task": "classification",
+  "metric_name": "accuracy"
+ },
+ "prior_graph": {
+  "target_column": "target",
+  "n_features": 300,
+  "n_concepts": 15,
+  "active_connections": 270,
+  "total_connections": 4500,
+  "mask_density": 0.06,
+  "orphan_feature_count": 30,
+  "orphan_feature_examples": [
+   "unmapped_S001",
+   "unmapped_S002",
+   "unmapped_S003",
+   "unmapped_S004",
+   "unmapped_S005"
+  ],
+  "concept_fan_in": {
+   "angiogenesis": 18,
+   "apoptosis_regulation": 18,
+   "cell_cycle_checkpoint": 18,
+   "chromatin_remodeling": 18,
+   "circadian_entrainment": 18,
+   "cytoskeleton_remodeling": 18,
+   "dna_damage_repair": 18,
+   "glycolysis_metabolism": 18,
+   "growth_factor_kinase": 18,
+   "hypoxia_response": 18,
+   "immune_signaling": 18,
+   "interferon_response": 18,
+   "lipid_signaling": 18,
+   "oxidative_stress_response": 18,
+   "unfolded_protein_response": 18
+  }
+ },
+ "train_config": {
+  "epochs": 120,
+  "batch_size": 32,
+  "learning_rate": 0.003,
+  "weight_decay": 0.0001,
+  "hidden_units": 4,
+  "residual_units": 8,
+  "seed": 13,
+  "activation": "gelu",
+  "device": "cpu",
+  "patience": 15,
+  "early_stopping": false
+ },
+ "comparison": [
+  {
+   "model": "priorneuralnet",
+   "architecture": {
+    "type": "prior_masked_concepts",
+    "n_concepts": 15,
+    "hidden_units": 4,
+    "residual_units": 8,
+    "active_trainable_parameters": 639
+   },
+   "active_trainable_parameters": 639,
+   "metric_name": "accuracy",
+   "train_metrics": [
+    1.0,
+    0.9895833333333334,
+    1.0,
+    0.9895833333333334,
+    0.9947916666666666
+   ],
+   "val_metrics": [
+    0.6041666666666666,
+    0.6875,
+    0.7083333333333334,
+    0.7916666666666666,
+    0.6458333333333334
+   ],
+   "train_mean": 0.9947916666666667,
+   "val_mean": 0.6875,
+   "generalization_gap": 0.30729166666666674,
+   "auxiliary": {
+    "f1_macro": [
+     0.6039947894051237,
+     0.6840719613865731,
+     0.7083333333333334,
+     0.7902097902097902,
+     0.6381374722838138
+    ],
+    "roc_auc": [
+     0.6869565217391305,
+     0.7638888888888888,
+     0.7760416666666666,
+     0.8402777777777778,
+     0.6935763888888888
+    ]
+   }
+  },
+  {
+   "model": "unconstrained_mlp_param_matched",
+   "architecture": {
+    "type": "unconstrained_mlp",
+    "hidden_widths": [
+     2
+    ],
+    "parameter_target": 639,
+    "achieved_parameters": 608
+   },
+   "active_trainable_parameters": 608,
+   "metric_name": "accuracy",
+   "train_metrics": [
+    0.984375,
+    0.9895833333333334,
+    0.9635416666666666,
+    1.0,
+    1.0
+   ],
+   "val_metrics": [
+    0.5833333333333334,
+    0.6666666666666666,
+    0.7291666666666666,
+    0.7291666666666666,
+    0.7708333333333334
+   ],
+   "train_mean": 0.9875,
+   "val_mean": 0.6958333333333333,
+   "generalization_gap": 0.29166666666666674,
+   "auxiliary": {
+    "f1_macro": [
+     0.5826086956521739,
+     0.6643356643356644,
+     0.7281045751633988,
+     0.7290490664350847,
+     0.7658536585365854
+    ],
+    "roc_auc": [
+     0.6,
+     0.7274305555555556,
+     0.7795138888888888,
+     0.7760416666666666,
+     0.8350694444444444
+    ]
+   }
+  },
+  {
+   "model": "unconstrained_mlp_full",
+   "architecture": {
+    "type": "unconstrained_mlp",
+    "hidden_widths": [
+     64
+    ],
+    "achieved_parameters": 19394
+   },
+   "active_trainable_parameters": 19394,
+   "metric_name": "accuracy",
+   "train_metrics": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "val_metrics": [
+    0.5833333333333334,
+    0.7291666666666666,
+    0.6666666666666666,
+    0.6041666666666666,
+    0.6458333333333334
+   ],
+   "train_mean": 1.0,
+   "val_mean": 0.6458333333333333,
+   "generalization_gap": 0.35416666666666674,
+   "auxiliary": {
+    "f1_macro": [
+     0.5826086956521739,
+     0.7290490664350847,
+     0.6660869565217391,
+     0.5998244844229925,
+     0.6456795484151108
+    ],
+    "roc_auc": [
+     0.6817391304347826,
+     0.8402777777777778,
+     0.7760416666666666,
+     0.7326388888888888,
+     0.7586805555555556
+    ]
+   }
+  }
+ ],
+ "learning_curve": [
+  {
+   "train_fraction": 0.25,
+   "model": "priorneuralnet",
+   "val_metric": 0.5833333333333334,
+   "train_metric": 1.0
+  },
+  {
+   "train_fraction": 0.25,
+   "model": "unconstrained_mlp_param_matched",
+   "val_metric": 0.5833333333333334,
+   "train_metric": 0.9375
+  },
+  {
+   "train_fraction": 0.5,
+   "model": "priorneuralnet",
+   "val_metric": 0.6666666666666666,
+   "train_metric": 0.9895833333333334
+  },
+  {
+   "train_fraction": 0.5,
+   "model": "unconstrained_mlp_param_matched",
+   "val_metric": 0.6458333333333334,
+   "train_metric": 1.0
+  },
+  {
+   "train_fraction": 1.0,
+   "model": "priorneuralnet",
+   "val_metric": 0.7291666666666666,
+   "train_metric": 0.9947916666666666
+  },
+  {
+   "train_fraction": 1.0,
+   "model": "unconstrained_mlp_param_matched",
+   "val_metric": 0.6875,
+   "train_metric": 0.9791666666666666
+  }
+ ],
+ "concept_ranking": [
+  {
+   "concept": "apoptosis_regulation",
+   "attribution": 2.8008220195770264,
+   "rank": 1,
+   "top_features": [
+    {
+     "feature": "apoptosis_regulation_S006",
+     "concept": "apoptosis_regulation",
+     "contribution": -0.6301672458648682
+    },
+    {
+     "feature": "apoptosis_regulation_S004",
+     "concept": "apoptosis_regulation",
+     "contribution": -0.5139393210411072
+    }
+   ]
+  },
+  {
+   "concept": "hypoxia_response",
+   "attribution": 2.66633677482605,
+   "rank": 2,
+   "top_features": [
+    {
+     "feature": "hypoxia_response_S005",
+     "concept": "hypoxia_response",
+     "contribution": -0.6569905877113342
+    },
+    {
+     "feature": "hypoxia_response_S002",
+     "concept": "hypoxia_response",
+     "contribution": -0.6353281736373901
+    }
+   ]
+  },
+  {
+   "concept": "chromatin_remodeling",
+   "attribution": 2.53833270072937,
+   "rank": 3,
+   "top_features": [
+    {
+     "feature": "chromatin_remodeling_S015",
+     "concept": "chromatin_remodeling",
+     "contribution": -0.9926390051841736
+    },
+    {
+     "feature": "chromatin_remodeling_S018",
+     "concept": "chromatin_remodeling",
+     "contribution": -0.6506522297859192
+    }
+   ]
+  },
+  {
+   "concept": "angiogenesis",
+   "attribution": 1.1454530954360962,
+   "rank": 4,
+   "top_features": [
+    {
+     "feature": "angiogenesis_S009",
+     "concept": "angiogenesis",
+     "contribution": -0.8626464009284973
+    },
+    {
+     "feature": "angiogenesis_S018",
+     "concept": "angiogenesis",
+     "contribution": -0.8374254703521729
+    }
+   ]
+  },
+  {
+   "concept": "growth_factor_kinase",
+   "attribution": 1.1187416315078735,
+   "rank": 5,
+   "top_features": [
+    {
+     "feature": "growth_factor_kinase_S001",
+     "concept": "growth_factor_kinase",
+     "contribution": -0.7919692397117615
+    },
+    {
+     "feature": "growth_factor_kinase_S015",
+     "concept": "growth_factor_kinase",
+     "contribution": -0.6114814877510071
+    }
+   ]
+  },
+  {
+   "concept": "cytoskeleton_remodeling",
+   "attribution": 1.040561556816101,
+   "rank": 6,
+   "top_features": [
+    {
+     "feature": "cytoskeleton_remodeling_S004",
+     "concept": "cytoskeleton_remodeling",
+     "contribution": -0.8362330794334412
+    },
+    {
+     "feature": "cytoskeleton_remodeling_S006",
+     "concept": "cytoskeleton_remodeling",
+     "contribution": 0.6665452718734741
+    }
+   ]
+  },
+  {
+   "concept": "lipid_signaling",
+   "attribution": 0.975201427936554,
+   "rank": 7,
+   "top_features": [
+    {
+     "feature": "lipid_signaling_S013",
+     "concept": "lipid_signaling",
+     "contribution": -0.7012671828269958
+    },
+    {
+     "feature": "lipid_signaling_S009",
+     "concept": "lipid_signaling",
+     "contribution": -0.5621684789657593
+    }
+   ]
+  },
+  {
+   "concept": "cell_cycle_checkpoint",
+   "attribution": 0.8094154596328735,
+   "rank": 8,
+   "top_features": [
+    {
+     "feature": "cell_cycle_checkpoint_S007",
+     "concept": "cell_cycle_checkpoint",
+     "contribution": -0.845043420791626
+    },
+    {
+     "feature": "cell_cycle_checkpoint_S013",
+     "concept": "cell_cycle_checkpoint",
+     "contribution": 0.5412425994873047
+    }
+   ]
+  },
+  {
+   "concept": "glycolysis_metabolism",
+   "attribution": 0.6663233637809753,
+   "rank": 9,
+   "top_features": [
+    {
+     "feature": "glycolysis_metabolism_S017",
+     "concept": "glycolysis_metabolism",
+     "contribution": -0.5021264553070068
+    },
+    {
+     "feature": "glycolysis_metabolism_S012",
+     "concept": "glycolysis_metabolism",
+     "contribution": -0.47999051213264465
+    }
+   ]
+  },
+  {
+   "concept": "unfolded_protein_response",
+   "attribution": 0.5838148593902588,
+   "rank": 10,
+   "top_features": [
+    {
+     "feature": "unfolded_protein_response_S006",
+     "concept": "unfolded_protein_response",
+     "contribution": -0.4910702407360077
+    },
+    {
+     "feature": "unfolded_protein_response_S016",
+     "concept": "unfolded_protein_response",
+     "contribution": 0.443280428647995
+    }
+   ]
+  }
+ ],
+ "verdict": "priorneuralnet vs parameter-matched MLP on accuracy: 0.6875 vs 0.6958 -> prior wins by 0.0083.",
+ "warnings": [
+  "30 orphan features have no concept mapping; a 8-unit regularized residual channel absorbed them."
+ ],
+ "token_estimate": 1804,
+ "artifacts": {
+  "manifest": "manifest.json",
+  "report": "report.html",
+  "concept_activations": "concept_activations.parquet",
+  "final_model": "final_model.pt",
+  "prior_graph": "prior_graph.json",
+  "concept_drivers": "concept_drivers.json"
+ }
+}

@@ -221,3 +221,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+PriorNeuralNet-MCP_specs.md
+
+# local working docs
+# demo/benchmark artifacts
+runs/
+demo/

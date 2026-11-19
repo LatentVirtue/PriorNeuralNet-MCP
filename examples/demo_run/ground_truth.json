@@ -1,0 +1,9 @@
+{
+ "active_pathways": [
+  "apoptosis_regulation",
+  "chromatin_remodeling",
+  "hypoxia_response"
+ ],
+ "target_column": "target",
+ "seed": 7
+}
